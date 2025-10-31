@@ -27,7 +27,15 @@ docker compose up
 ```
 3. Acesse a api em
 ```bash
-http://localhost:3000
+FRONT: http://localhost:3000
+BACK: POST http://localhost:8080/api/calculate
+  {
+    "initDate": "2024-01-01",
+    "finishDate": "2034-01-01",
+    "initPayment": "2025-02-15",
+    "loan": 140000,
+    "percent": 7
+  }
 ```
 
 ---
@@ -53,5 +61,13 @@ mvn spring-boot:run
 ```
 4. Acesse a api em
 ```bash
-http://localhost:3000
+FRONT: http://localhost:3000
+BACK: POST http://localhost:8080/api/calculate
+  {
+    "initDate": "2024-01-01",
+    "finishDate": "2034-01-01",
+    "initPayment": "2025-02-15",
+    "loan": 140000,
+    "percent": 7
+  }
 ```
