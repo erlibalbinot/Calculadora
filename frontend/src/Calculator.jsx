@@ -8,6 +8,7 @@ export default function LoanCalculator() {
     loan: "",
     percent: "",
   });
+
   
 
   const [result, setResult] = useState(null);
@@ -58,7 +59,7 @@ export default function LoanCalculator() {
     setLoading(true);
     try {
       const validate = validatePeriod(form);
-      if (validate == "OK") {
+      if (validate === "OK") {
         const numericLoan = parseFloat(form.loan.replace(/[R$\s.]/g, "").replace(",", "."));
         const payload = {
           ...form,
@@ -66,7 +67,9 @@ export default function LoanCalculator() {
           percent: parseFloat(form.percent),
         };
 
-        const response = await fetch("http://localhost:8080/api/calculate", {
+        const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8080";
+
+        const response = await fetch(`${API_URL}/api/calculate`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
@@ -76,7 +79,7 @@ export default function LoanCalculator() {
 
         const data = await response.json();
         setResult(data);
-      } else if (validate == "DateInit") {
+      } else if (validate === "DateInit") {
         alert("Verifique as datas! O primeiro pagamento deve estar entre a data inicial e final.");
       } else {
         alert("Verifique as datas! A data final deve ser maior que a data inicial.");
