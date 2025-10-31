@@ -25,7 +25,7 @@ public class CalculatorController {
     @PostMapping("/calculate")
     public ResponseEntity<InstallmentsDto> calculate(@Valid @RequestBody RequestParams params) {
         String dateValid = params.validateDates();
-        if (dateValid.equals("ok")) {
+        if (dateValid.equals("OK")) {
             return ResponseEntity.status(HttpStatus.OK).body(service.calculate(params));
         } else {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, dateValid);
