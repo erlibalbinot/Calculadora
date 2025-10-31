@@ -42,6 +42,8 @@ git clone https://github.com/erlibalbinot/Calculadora.git
 2. Acesse a pasta frontend e rode a aplicação
 ```bash
 cd Calculadora/frontend
+npm install
+npm run build
 npm start
 ```
 3. Acesse a pasta backend e rode a aplicação
